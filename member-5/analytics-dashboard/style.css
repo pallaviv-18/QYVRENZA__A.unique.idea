@@ -240,11 +240,9 @@ main {
     height: 180px;
     margin: 15px auto 25px;
     border-radius: 50%;
-    background: conic-gradient(
-        #ff7f8a 0deg 78deg,
-        #ffc46b 78deg 243deg,
-        #7ee2ad 243deg 360deg
-    );
+    background: conic-gradient(#ff7f8a 0deg 78deg,
+            #ffc46b 78deg 243deg,
+            #7ee2ad 243deg 360deg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -424,6 +422,17 @@ footer {
 
     .metric-grid {
         grid-template-columns: 1fr;
+    }
+
+    .chart {
+        gap: 4px;
+        padding: 20px 8px;
+    }
+
+    .bar {
+        flex: 1;
+        width: auto;
+        max-width: 45px;
     }
 
     .controls {
