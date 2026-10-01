@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,30 +9,127 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
+
 <body>
   <div class="app-shell">
-    <aside class="sidebar" id="sidebar"><a class="brand" href="../ai-agent-dashboard/index.html"><span>O</span> orbit</a><button type="button" class="team-switch" id="team-switch"><span class="team-icon">A</span><span><strong>Acme Studio</strong><small>Pro workspace</small></span><b>⌄</b></button><nav aria-label="Main navigation"><a href="../ai-agent-dashboard/index.html">⌂ &nbsp; Overview</a><a href="../ai-agent-dashboard/index.html">✳ &nbsp; Agents</a><a href="../ai-workflow-builder/index.html">⤳ &nbsp; Workflows</a><a class="active" href="index.html">☑ &nbsp; Approvals <span>4</span></a><a href="#review-history">◷ &nbsp; Activity</a></nav><div class="sidebar-bottom"><button type="button" class="settings-link" id="settings-button">⚙ &nbsp; Settings</button><div class="user-card"><span class="user-avatar">JD</span><div><strong>Jamie Davis</strong><small>Workspace admin</small></div><button type="button" id="user-menu" aria-label="Open user menu">···</button></div></div></aside>
+    <aside class="sidebar" id="sidebar"><a class="brand" href="../ai-agent-dashboard/index.html"><span>O</span>
+        orbit</a><button type="button" class="team-switch" id="team-switch"><span
+          class="team-icon">A</span><span><strong>Acme Studio</strong><small>Pro
+            workspace</small></span><b>⌄</b></button>
+      <nav aria-label="Main navigation"><a href="../ai-agent-dashboard/index.html">⌂ &nbsp; Overview</a><a
+          href="../ai-agent-dashboard/index.html">✳ &nbsp; Agents</a><a href="../ai-workflow-builder/index.html">⤳
+          &nbsp; Workflows</a><a class="active" href="index.html">☑ &nbsp; Approvals <span>4</span></a><a
+          href="#review-history">◷ &nbsp; Activity</a></nav>
+      <div class="sidebar-bottom"><button type="button" class="settings-link" id="settings-button">⚙ &nbsp;
+          Settings</button>
+        <div class="user-card"><span class="user-avatar">JD</span>
+          <div><strong>Jamie Davis</strong><small>Workspace admin</small></div><button type="button" id="user-menu"
+            aria-label="Open user menu">···</button>
+        </div>
+      </div>
+    </aside>
     <main class="main-content">
-      <header class="mobile-header"><a class="brand" href="../ai-agent-dashboard/index.html"><span>O</span> orbit</a><button type="button" id="mobile-menu" aria-label="Open menu" aria-expanded="false">☰</button></header>
+      <header class="mobile-header"><a class="brand" href="../ai-agent-dashboard/index.html"><span>O</span>
+          orbit</a><button type="button" id="mobile-menu" aria-label="Open menu" aria-expanded="false">☰</button>
+      </header>
       <div class="page-content">
         <div class="breadcrumbs">WORKSPACE <span>/</span> APPROVALS</div>
-        <section class="page-title"><div><h1>Human approval center</h1><p>Review AI actions that need your decision.</p></div><button type="button" class="filter-button" id="filter-button">☷ &nbsp; Filters</button></section>
-        <section class="summary"><article><span>Waiting for review</span><strong>04</strong></article><article><span>Approved today</span><strong class="green-text">12</strong></article><article><span>Average review time</span><strong>3.2 <small>min</small></strong></article></section>
+        <section class="page-title">
+          <div>
+            <h1>Human approval center</h1>
+            <p>Review AI actions that need your decision.</p>
+          </div><button type="button" class="filter-button" id="filter-button">☷ &nbsp; Filters</button>
+        </section>
+        <section class="summary">
+          <article><span>Waiting for review</span><strong>04</strong></article>
+          <article><span>Approved today</span><strong class="green-text">12</strong></article>
+          <article><span>Average review time</span><strong>3.2 <small>min</small></strong></article>
+        </section>
         <section class="review-layout">
-          <div class="queue-panel"><div class="queue-header"><div><h2>Needs your review <span>4</span></h2><p>Oldest requests shown first</p></div><button type="button" aria-label="Sort requests">↕</button></div>
+          <div class="queue-panel">
+            <div class="queue-header">
+              <div>
+                <h2>Needs your review <span>4</span></h2>
+                <p>Oldest requests shown first</p>
+              </div><button type="button" aria-label="Sort requests">↕</button>
+            </div>
             <div class="request-list" id="request-list">
-              <button type="button" class="request selected" data-priority="high" data-title="Send refund offer" data-agent="Customer support agent" data-detail="Offer a $25 credit to Taylor Morgan for the delayed delivery of order #48291."><span class="request-icon orange">↗</span><span class="request-copy"><strong>Send refund offer</strong><small>Customer support agent · 8 min ago</small></span><span class="priority">HIGH</span></button>
-              <button type="button" class="request" data-priority="normal" data-title="Publish social post" data-agent="Marketing assistant" data-detail="Publish the prepared product launch announcement to the company social account."><span class="request-icon purple">✳</span><span class="request-copy"><strong>Publish social post</strong><small>Marketing assistant · 21 min ago</small></span><span class="priority normal">NORMAL</span></button>
-              <button type="button" class="request" data-priority="normal" data-title="Update CRM record" data-agent="Sales assistant" data-detail="Update the company record with the latest contact and qualification details."><span class="request-icon blue">↻</span><span class="request-copy"><strong>Update CRM record</strong><small>Sales assistant · 36 min ago</small></span><span class="priority normal">NORMAL</span></button>
-              <button type="button" class="request" data-priority="low" data-title="Send follow-up email" data-agent="Customer success agent" data-detail="Send a follow-up email with onboarding resources to the new account owner."><span class="request-icon green">✉</span><span class="request-copy"><strong>Send follow-up email</strong><small>Customer success · 1 hr ago</small></span><span class="priority low">LOW</span></button>
+              <button type="button" class="request selected" aria-pressed="true" data-priority="high"
+                data-title="Send refund offer" data-agent="Customer support agent"
+                data-detail="Offer a $25 credit to Taylor Morgan for the delayed delivery of order #48291."
+                data-reason="This action sends a customer-facing offer and applies a credit to their account."
+                data-meta-one-label="Customer" data-meta-one-value="Taylor Morgan" data-meta-two-label="Order"
+                data-meta-two-value="#48291 · $148.00" data-requested="8 min ago"><span
+                  class="request-icon orange">↗</span><span class="request-copy"><strong>Send refund
+                    offer</strong><small>Customer support agent · 8 min ago</small></span><span
+                  class="priority">HIGH</span></button>
+              <button type="button" class="request" aria-pressed="false" data-priority="normal"
+                data-title="Publish social post" data-agent="Marketing assistant"
+                data-detail="Publish the prepared product launch announcement to the company social account."
+                data-reason="This action publishes an external message and could affect the company's public presence."
+                data-meta-one-label="Channel" data-meta-one-value="Company social account"
+                data-meta-two-label="Campaign" data-meta-two-value="Product launch" data-requested="21 min ago"><span
+                  class="request-icon purple">✳</span><span class="request-copy"><strong>Publish social
+                    post</strong><small>Marketing assistant · 21 min ago</small></span><span
+                  class="priority normal">NORMAL</span></button>
+              <button type="button" class="request" aria-pressed="false" data-priority="normal"
+                data-title="Update CRM record" data-agent="Sales assistant"
+                data-detail="Update the company record with the latest contact and qualification details."
+                data-reason="This action updates a shared customer record and may affect downstream sales decisions."
+                data-meta-one-label="Account" data-meta-one-value="Northstar Retail" data-meta-two-label="Record"
+                data-meta-two-value="Qualification details" data-requested="36 min ago"><span
+                  class="request-icon blue">↻</span><span class="request-copy"><strong>Update CRM
+                    record</strong><small>Sales assistant · 36 min ago</small></span><span
+                  class="priority normal">NORMAL</span></button>
+              <button type="button" class="request" aria-pressed="false" data-priority="low"
+                data-title="Send follow-up email" data-agent="Customer success agent"
+                data-detail="Send a follow-up email with onboarding resources to the new account owner."
+                data-reason="This action sends an external email that cannot be recalled."
+                data-meta-one-label="Recipient" data-meta-one-value="New account owner" data-meta-two-label="Content"
+                data-meta-two-value="Onboarding resources" data-requested="1 hr ago"><span
+                  class="request-icon green">✉</span><span class="request-copy"><strong>Send follow-up
+                    email</strong><small>Customer success · 1 hr ago</small></span><span
+                  class="priority low">LOW</span></button>
             </div>
           </div>
-          <article class="detail-panel"><div class="detail-top"><span class="review-badge"><i></i> PENDING REVIEW</span><button type="button" id="detail-menu" aria-label="More request options">···</button></div><div class="detail-agent"><span class="request-icon orange">↗</span><div><strong id="agent-name">Customer support agent</strong><small>Requested 8 minutes ago</small></div></div><h2 id="request-title">Send refund offer</h2><p class="detail-description" id="request-detail">Offer a $25 credit to Taylor Morgan for the delayed delivery of order #48291.</p><div class="context-box"><strong>Why this needs approval</strong><p>This action sends a customer-facing offer and applies a credit to their account.</p></div><div class="request-meta"><div><span>Customer</span><strong>Taylor Morgan</strong></div><div><span>Order</span><strong>#48291 · $148.00</strong></div></div><div class="decision-actions"><button type="button" class="reject-button" id="reject-button">Decline</button><button type="button" class="approve-button" id="approve-button">✓ &nbsp; Approve action</button></div><button type="button" class="edit-link" id="edit-button">Request changes instead</button></article>
+          <article class="detail-panel">
+            <div class="detail-top"><span class="review-badge"><i></i> PENDING REVIEW</span><button type="button"
+                id="detail-menu" aria-label="More request options">···</button></div>
+            <div class="detail-agent"><span class="request-icon orange">↗</span>
+              <div><strong id="agent-name">Customer support agent</strong><small id="request-time">Requested 8 min
+                  ago</small></div>
+            </div>
+            <h2 id="request-title">Send refund offer</h2>
+            <p class="detail-description" id="request-detail">Offer a $25 credit to Taylor Morgan for the delayed
+              delivery of order #48291.</p>
+            <div class="context-box"><strong>Why this needs approval</strong>
+              <p id="request-reason">This action sends a customer-facing offer and applies a credit to their account.
+              </p>
+            </div>
+            <div class="request-meta">
+              <div><span id="meta-one-label">Customer</span><strong id="meta-one-value">Taylor Morgan</strong></div>
+              <div><span id="meta-two-label">Order</span><strong id="meta-two-value">#48291 · $148.00</strong></div>
+            </div>
+            <div class="decision-actions"><button type="button" class="reject-button"
+                id="reject-button">Decline</button><button type="button" class="approve-button" id="approve-button">✓
+                &nbsp; Approve action</button></div><button type="button" class="edit-link" id="edit-button">Request
+              changes instead</button>
+          </article>
         </section>
-        <footer id="review-history">AI actions stay in your hands. <button type="button" id="history-button">Review history →</button></footer>
+        <footer id="review-history">AI actions stay in your hands. <button type="button" id="history-button">Review
+            history →</button></footer>
       </div>
     </main>
   </div>
-  <dialog class="approval-dialog" id="approval-dialog"><form method="dialog"><button type="button" class="dialog-close" aria-label="Close dialog">×</button><p class="dialog-kicker">ORBIT WORKSPACE</p><h2 id="approval-dialog-title"></h2><div id="approval-dialog-content"></div><div class="dialog-actions"><button type="button" class="dialog-cancel" value="cancel">Close</button><button type="button" class="dialog-confirm" id="approval-dialog-confirm" value="confirm">Done</button></div></form></dialog>
+  <dialog class="approval-dialog" id="approval-dialog">
+    <form method="dialog"><button type="button" class="dialog-close" aria-label="Close dialog">×</button>
+      <p class="dialog-kicker">ORBIT WORKSPACE</p>
+      <h2 id="approval-dialog-title"></h2>
+      <div id="approval-dialog-content"></div>
+      <div class="dialog-actions"><button type="button" class="dialog-cancel" value="cancel">Close</button><button
+          type="button" class="dialog-confirm" id="approval-dialog-confirm" value="confirm">Done</button></div>
+    </form>
+  </dialog>
 </body>
+
 </html>
