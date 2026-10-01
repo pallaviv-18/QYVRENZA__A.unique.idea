@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f3f2ec">
+    <meta name="description" content="Explore the QYVRENZA collection of AI, SaaS, workflow, and analytics interfaces.">
+    <title>QYVRENZA | Project Index</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: light;
+            --paper: #f3f2ec;
+            --surface: #fffefa;
+            --ink: #17211f;
+            --muted: #65716e;
+            --line: #d8ded8;
+            --green: #b9e7cf;
+            --orange: #f2a77e;
+            --yellow: #f1d779;
+            --blue: #bed8eb;
+            --mono: "DM Mono", Consolas, monospace;
+            --sans: "Manrope", "Trebuchet MS", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-width: 320px;
+            margin: 0;
+            color: var(--ink);
+            background-color: var(--paper);
+            background-image: linear-gradient(rgba(23, 33, 31, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(23, 33, 31, .035) 1px, transparent 1px);
+            background-size: 28px 28px;
+            font-family: var(--sans);
+            letter-spacing: 0;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .shell {
+            width: min(1320px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 72px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .brand-mark {
+            display: grid;
+            width: 30px;
+            aspect-ratio: 1;
+            place-items: center;
+            border: 1px solid var(--ink);
+            border-radius: 5px;
+            background: var(--green);
+            font-family: var(--mono);
+            font-size: 14px;
+        }
+
+        .top-note,
+        .eyebrow,
+        .app-meta,
+        .count,
+        .footer-note {
+            font-family: var(--mono);
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .top-note {
+            color: var(--muted);
+        }
+
+        .intro {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 28px;
+            align-items: end;
+            padding: 38px 0 28px;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin: 0 0 12px;
+            color: var(--muted);
+        }
+
+        .eyebrow::before {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #58a77b;
+            content: "";
+        }
+
+        h1 {
+            max-width: 720px;
+            margin: 0;
+            font-size: clamp(30px, 4vw, 48px);
+            line-height: 1.08;
+            font-weight: 700;
+        }
+
+        .intro-copy {
+            max-width: 610px;
+            margin: 12px 0 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+        .project-count {
+            display: grid;
+            min-width: 112px;
+            padding: 12px 15px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            background: var(--surface);
+            text-align: right;
+        }
+
+        .project-count strong {
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        .count {
+            margin-top: 6px;
+            color: var(--muted);
+        }
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 14px 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .filter {
+            min-height: 34px;
+            padding: 0 12px;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            color: var(--muted);
+            background: transparent;
+            font: 600 12px var(--sans);
+            cursor: pointer;
+        }
+
+        .filter:hover {
+            border-color: var(--line);
+            color: var(--ink);
+        }
+
+        .filter[aria-pressed="true"] {
+            border-color: var(--ink);
+            color: var(--ink);
+            background: var(--surface);
+        }
+
+        .search {
+            width: min(280px, 100%);
+            height: 38px;
+            padding: 0 12px;
+            border: 1px solid var(--line);
+            border-radius: 5px;
+            outline: none;
+            color: var(--ink);
+            background: var(--surface);
+            font: 13px var(--sans);
+        }
+
+        .search:focus {
+            border-color: #398864;
+            box-shadow: 0 0 0 3px rgba(88, 167, 123, .16);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            padding: 20px 0 42px;
+        }
+
+        .app-card {
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            background: var(--surface);
+            animation: arrive .35s ease both;
+        }
+
+        .app-card:nth-child(3n + 2) {
+            animation-delay: 45ms;
+        }
+
+        .app-card:nth-child(3n) {
+            animation-delay: 90ms;
+        }
+
+        .preview {
+            position: relative;
+            height: 182px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--line);
+            background: #e8e9e2;
+            pointer-events: none;
+        }
+
+        .preview iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            pointer-events: none;
+            transform-origin: top left;
+        }
+
+        .preview-label {
+            position: absolute;
+            right: 9px;
+            bottom: 9px;
+            padding: 5px 7px;
+            border: 1px solid rgba(23, 33, 31, .12);
+            border-radius: 3px;
+            color: var(--ink);
+            background: rgba(255, 254, 250, .9);
+            font: 10px var(--mono);
+        }
+
+        .app-body {
+            padding: 15px 16px 16px;
+        }
+
+        .app-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .app-title {
+            margin: 10px 0 6px;
+            font-size: 18px;
+            line-height: 1.25;
+        }
+
+        .app-description {
+            min-height: 40px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .app-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 36px;
+            margin-top: 13px;
+            padding: 0 11px;
+            border-radius: 4px;
+            background: var(--green);
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .app-link:hover {
+            background: #a2d9bc;
+        }
+
+        .app-card[data-group="workspace"] .app-link {
+            background: var(--blue);
+        }
+
+        .app-card[data-group="agents"] .app-link {
+            background: var(--orange);
+        }
+
+        .app-card[data-group="analytics"] .app-link {
+            background: var(--yellow);
+        }
+
+        .empty-state {
+            display: none;
+            grid-column: 1 / -1;
+            padding: 45px 20px;
+            border: 1px dashed var(--line);
+            color: var(--muted);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px 0 28px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+        }
+
+        .footer-note {
+            margin: 0;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        @keyframes arrive {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .toolbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .search {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .shell {
+                width: min(100% - 28px, 520px);
+            }
+
+            .topbar {
+                min-height: 60px;
+            }
+
+            .top-note {
+                font-size: 9px;
+            }
+
+            .intro {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                padding: 26px 0 20px;
+            }
+
+            .project-count {
+                display: flex;
+                align-items: baseline;
+                gap: 9px;
+                width: fit-content;
+                text-align: left;
+            }
+
+            .project-count strong {
+                font-size: 21px;
+            }
+
+            .count {
+                margin: 0;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding-top: 14px;
+            }
+
+            .preview {
+                height: 195px;
+            }
+
+            .app-description {
+                min-height: 0;
+            }
+
+            .footer {
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="shell topbar">
+        <a class="brand" href="index.html" aria-label="QYVRENZA project index">
+            <span class="brand-mark" aria-hidden="true">Q</span>
+            <span>QYVRENZA</span>
+        </a>
+        <span class="top-note">Interface collection / 2026</span>
+    </header>
+
+    <main class="shell">
+        <section class="intro" aria-labelledby="page-title">
+            <div>
+                <p class="eyebrow">Project index · HTML / CSS / JS</p>
+                <h1 id="page-title">One place to explore the whole collection.</h1>
+                <p class="intro-copy">A working directory of AI products, workflow tools, and data interfaces. Choose a
+                    project or filter the collection to find a starting point.</p>
+            </div>
+            <div class="project-count">
+                <strong id="total-count">12</strong>
+                <span class="count">live prototypes</span>
+            </div>
+        </section>
+
+        <section class="toolbar" aria-label="Project filters">
+            <div class="filters" role="group" aria-label="Filter by collection">
+                <button class="filter" type="button" data-filter="all" aria-pressed="true">All projects</button>
+                <button class="filter" type="button" data-filter="saas" aria-pressed="false">SaaS</button>
+                <button class="filter" type="button" data-filter="workspace" aria-pressed="false">AI workspace</button>
+                <button class="filter" type="button" data-filter="agents" aria-pressed="false">Agents</button>
+                <button class="filter" type="button" data-filter="analytics" aria-pressed="false">Analytics</button>
+            </div>
+            <label class="sr-only" for="project-search">Search projects</label>
+            <input class="search" id="project-search" type="search" placeholder="Search projects..." autocomplete="off">
+        </section>
+
+        <section class="grid" id="project-grid" aria-label="Projects">
+            <article class="app-card" data-group="saas" data-search="onboarding workspace setup member 1">
+                <div class="preview"><iframe src="member-1/ai-onboarding/index.html" title="Preview: AI onboarding"
+                        loading="lazy"></iframe><span class="preview-label">01 / 12</span></div>
+                <div class="app-body">
+                    <div class="app-meta"><span>Member 01</span><span>SaaS</span></div>
+                    <h2 class="app-title">AI Onboarding</h2>
+                    <p class="app-description">A guided first-run experience for setting up a new workspace.</p><a
+                        class="app-link" href="member-1/ai-onboarding/index.html">Open project <span
+                            aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <article class="app-card" data-group="saas" data-search="pricing plans billing member 1">
+                <div class="preview"><iframe src="member-1/ai-pricing/index.html" title="Preview: AI pricing"
+                        loading="lazy"></iframe><span class="preview-label">02 / 12</span></div>
+                <div class="app-body">
+                    <div class="app-meta"><span>Member 01</span><span>SaaS</span></div>
+                    <h2 class="app-title">AI Pricing</h2>
+                    <p class="app-description">Plans and product tiers for an AI SaaS platform.</p><a class="app-link"
+                        href="member-1/ai-pricing/index.html">Open project <span aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <article class="app-card" data-group="saas" data-search="landing product interface intelligence member 1">
+                <div class="preview"><iframe src="member-1/ai-saas-landing/index.html"
+                        title="Preview: AI SaaS landing page" loading="lazy"></iframe><span class="preview-label">03 /
+                        12</span></div>
+                <div class="app-body">
+                    <div class="app-meta"><span>Member 01</span><span>SaaS</span></div>
+                    <h2 class="app-title">AI SaaS Landing</h2>
+                    <p class="app-description">A product introduction for an interface intelligence collection.</p><a
+                        class="app-link" href="member-1/ai-saas-landing/index.html">Open project <span
+                            aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <article class="app-card" data-group="workspace" data-search="chat assistant conversation member 2">
+                <div class="preview"><iframe src="member-2/AI-Chat/index.html" title="Preview: AI chat workspace"
+                        loading="lazy"></iframe><span class="preview-label">04 / 12</span></div>
+                <div class="app-body">
+                    <div class="app-meta"><span>Member 02</span><span>AI workspace</span></div>
+                    <h2 class="app-title">AI Chat</h2>
+                    <p class="app-description">A conversational workspace for prompt-led assistance.</p><a
+                        class="app-link" href="member-2/AI-Chat/index.html">Open project <span
+                            aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <article class="app-card" data-group="workspace" data-search="document summarize summary member 2">
+                <div class="preview"><iframe src="member-2/document-summarizer/index.html"
+                        title="Preview: document summarizer" loading="lazy"></iframe><span class="preview-label">05 /
+                        12</span></div>
+                <div class="app-body">
+                    <div class="app-meta"><span>Member 02</span><span>AI workspace</span></div>
+                    <h2 class="app-title">Document Summarizer</h2>
+                    <p class="app-description">A focused interface for extracting useful takeaways from documents.</p><a
+                        class="app-link" href="member-2/document-summarizer/index.html">Open project <span
+                            aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <article class="app-card" data-group="workspace" data-search="smart search knowledge find member 2">
+                <div class="preview"><iframe src="member-2/smart-search/index.html" title="Preview: AI smart search"
+                        loading="lazy"></iframe><span class="preview-label">06 / 12</span></div>
+                <div class="app-body">
+                    <div class="app-meta"><span>Member 02</span><span>AI workspace</span></div>
+                    <h2 class="app-title">Smart Search</h2>
+                    <p class="app-description">A search interface for exploring answers across a connected knowledge
+                        base.</p><a class="app-link" href="member-2/smart-search/index.html">Open project <span
+                            aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <article class="app-card" data-group="agents" data-search="agent dashboard monitor overview member 3">
+                <div class="preview"><iframe src="member-3/ai-agent-dashboard/index.html"
+                        title="Preview: agent dashboard" loading="lazy"></iframe><span class="preview-label">07 /
+                        12</span></div>
+                <div class="app-body">
+                    <div class="app-meta"><span>Member 03</span><span>Agents</span></div>
+                    <h2 class="app-title">Agent Dashboard</h2>
+                    <p class="app-description">A control room for monitoring agents, tasks, and activity.</p><a
+                        class="app-link" href="member-3/ai-agent-dashboard/index.html">Open project <span
+                            aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <article class="app-card" data-group="agents" data-search="workflow builder automation member 3">
+                <div class="preview"><iframe src="member-3/ai-workflow-builder/index.html"
+                        title="Preview: AI workflow builder" loading="lazy"></iframe><span class="preview-label">08 /
+                        12</span></div>
+                <div class="app-body">
+                    <div class="app-meta"><span>Member 03</span><span>Agents</span></div>
+                    <h2 class="app-title">Workflow Builder</h2>
+                    <p class="app-description">A visual workspace for composing and reviewing agent workflows.</p><a
+                        class="app-link" href="member-3/ai-workflow-builder/index.html">Open project <span
+                            aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <article class="app-card" data-group="agents" data-search="human approval review decisions member 3">
+                <div class="preview"><iframe src="member-3/human-approval-center/index.html"
+                        title="Preview: human approval center" loading="lazy"></iframe><span class="preview-label">09 /
+                        12</span></div>
+                <div class="app-body">
+                    <div class="app-meta"><span>Member 03</span><span>Agents</span></div>
+                    <h2 class="app-title">Human Approval Center</h2>
+                    <p class="app-description">A review queue for decisions that need a person in the loop.</p><a
+                        class="app-link" href="member-3/human-approval-center/index.html">Open project <span
+                            aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <article class="app-card" data-group="analytics" data-search="analytics dashboard metrics member 5">
+                <div class="preview"><iframe src="member-5/analytics-dashboard/index.html"
+                        title="Preview: analytics dashboard" loading="lazy"></iframe><span class="preview-label">10 /
+                        12</span></div>
+                <div class="app-body">
+                    <div class="app-meta"><span>Member 05</span><span>Analytics</span></div>
+                    <h2 class="app-title">Analytics Dashboard</h2>
+                    <p class="app-description">A concise overview of performance metrics and trends.</p><a
+                        class="app-link" href="member-5/analytics-dashboard/index.html">Open project <span
+                            aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <article class="app-card" data-group="analytics" data-search="anomaly detection alerts monitor member 5">
+                <div class="preview"><iframe src="member-5/anomaly-detection/index.html"
+                        title="Preview: anomaly detection" loading="lazy"></iframe><span class="preview-label">11 /
+                        12</span></div>
+                <div class="app-body">
+                    <div class="app-meta"><span>Member 05</span><span>Analytics</span></div>
+                    <h2 class="app-title">Anomaly Detection</h2>
+                    <p class="app-description">A monitoring view for spotting unusual changes in system data.</p><a
+                        class="app-link" href="member-5/anomaly-detection/index.html">Open project <span
+                            aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <article class="app-card" data-group="analytics" data-search="prediction studio forecast modeling member 5">
+                <div class="preview"><iframe src="member-5/prediction-studio/index.html"
+                        title="Preview: prediction studio" loading="lazy"></iframe><span class="preview-label">12 /
+                        12</span></div>
+                <div class="app-body">
+                    <div class="app-meta"><span>Member 05</span><span>Analytics</span></div>
+                    <h2 class="app-title">Prediction Studio</h2>
+                    <p class="app-description">A workspace for reviewing forecasts and model outputs.</p><a
+                        class="app-link" href="member-5/prediction-studio/index.html">Open project <span
+                            aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <p class="empty-state" id="empty-state">No projects match those filters.</p>
+        </section>
+    </main>
+
+    <footer class="shell footer">
+        <p class="footer-note">QYVRENZA · Project directory</p>
+        <p class="footer-note">12 prototypes · 4 collections</p>
+    </footer>
+
+    <script>
+        const cards = [...document.querySelectorAll('.app-card')];
+        const filters = [...document.querySelectorAll('.filter')];
+        const search = document.querySelector('#project-search');
+        const emptyState = document.querySelector('#empty-state');
+        const totalCount = document.querySelector('#total-count');
+        let activeFilter = 'all';
+
+        function updateProjects() {
+            const query = search.value.trim().toLowerCase();
+            let visibleCount = 0;
+
+            for (const card of cards) {
+                const matchesFilter = activeFilter === 'all' || card.dataset.group === activeFilter;
+                const matchesSearch = `${card.dataset.search} ${card.textContent}`.toLowerCase().includes(query);
+                const isVisible = matchesFilter && matchesSearch;
+                card.hidden = !isVisible;
+                if (isVisible) visibleCount += 1;
+            }
+
+            emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+            totalCount.textContent = String(visibleCount);
+        }
+
+        for (const button of filters) {
+            button.addEventListener('click', () => {
+                activeFilter = button.dataset.filter;
+                for (const filter of filters) filter.setAttribute('aria-pressed', String(filter === button));
+                updateProjects();
+            });
+        }
+
+        search.addEventListener('input', updateProjects);
+    </script>
+</body>
+
+</html>
