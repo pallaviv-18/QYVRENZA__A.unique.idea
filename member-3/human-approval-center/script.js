@@ -5,11 +5,11 @@ const dialogTitle = document.querySelector("#approval-dialog-title");
 const dialogContent = document.querySelector("#approval-dialog-content");
 const dialogConfirm = document.querySelector("#approval-dialog-confirm");
 const completedRequests = [];
-let confirmAction = () => {};
+let confirmAction = () => { };
 let highPriorityOnly = false;
 let newestFirst = false;
 
-function showDialog(title, message, action = () => {}) {
+function showDialog(title, message, action = () => { }) {
   dialogTitle.textContent = title;
   dialogContent.replaceChildren();
   if (typeof message === "string") {
@@ -25,10 +25,24 @@ function showDialog(title, message, action = () => {}) {
 }
 
 function selectRequest(request) {
-  requests.forEach((item) => item.classList.toggle("selected", item === request));
+  requests.forEach((item) => {
+    const selected = item === request;
+    item.classList.toggle("selected", selected);
+    item.setAttribute("aria-pressed", String(selected));
+  });
+  const requestIcon = request.querySelector(".request-icon");
+  const detailIcon = document.querySelector(".detail-agent .request-icon");
+  detailIcon.className = requestIcon.className;
+  detailIcon.textContent = requestIcon.textContent;
   document.querySelector("#request-title").textContent = request.dataset.title;
   document.querySelector("#agent-name").textContent = request.dataset.agent;
+  document.querySelector("#request-time").textContent = `Requested ${request.dataset.requested}`;
   document.querySelector("#request-detail").textContent = request.dataset.detail;
+  document.querySelector("#request-reason").textContent = request.dataset.reason;
+  document.querySelector("#meta-one-label").textContent = request.dataset.metaOneLabel;
+  document.querySelector("#meta-one-value").textContent = request.dataset.metaOneValue;
+  document.querySelector("#meta-two-label").textContent = request.dataset.metaTwoLabel;
+  document.querySelector("#meta-two-value").textContent = request.dataset.metaTwoValue;
   document.querySelector(".detail-panel").classList.remove("resolved");
 }
 
