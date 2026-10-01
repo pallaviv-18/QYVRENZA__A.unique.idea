@@ -213,11 +213,9 @@ textarea {
     color: white;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #8b5cf6,
-            #6366f1
-        );
+            #6366f1);
 
     box-shadow:
         0 8px 25px rgba(139, 92, 246, 0.35);
@@ -271,11 +269,9 @@ textarea {
     color: white;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(139, 92, 246, 0.2),
-            rgba(99, 102, 241, 0.12)
-        );
+            rgba(99, 102, 241, 0.12));
 
     cursor: pointer;
 
@@ -591,11 +587,9 @@ textarea {
     font-weight: 700;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #8b5cf6,
-            #ec4899
-        );
+            #ec4899);
 }
 
 
@@ -627,7 +621,7 @@ textarea {
 }
 
 
-.user-profile > i {
+.user-profile>i {
 
     color: var(--text-muted);
 
@@ -889,12 +883,10 @@ textarea {
     font-size: 25px;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #8b5cf6,
             #6366f1,
-            #ec4899
-        );
+            #ec4899);
 
     box-shadow:
         0 0 50px rgba(139, 92, 246, 0.45);
@@ -1002,12 +994,10 @@ textarea {
 .welcome h2 span {
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             #a78bfa,
             #818cf8,
-            #f0abfc
-        );
+            #f0abfc);
 
     -webkit-background-clip: text;
 
@@ -1015,7 +1005,7 @@ textarea {
 }
 
 
-.welcome > p {
+.welcome>p {
 
     max-width: 530px;
 
@@ -1162,7 +1152,7 @@ textarea {
 }
 
 
-.prompt-card > i {
+.prompt-card>i {
 
     color: var(--text-muted);
 
@@ -1239,11 +1229,9 @@ textarea {
     color: white;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #8b5cf6,
-            #6366f1
-        );
+            #6366f1);
 
     box-shadow:
         0 5px 18px rgba(139, 92, 246, 0.25);
@@ -1255,11 +1243,9 @@ textarea {
     color: white;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #ec4899,
-            #8b5cf6
-        );
+            #8b5cf6);
 }
 
 
@@ -1310,11 +1296,9 @@ textarea {
 .message.user .message-content {
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(124, 58, 237, 0.8),
-            rgba(79, 70, 229, 0.8)
-        );
+            rgba(79, 70, 229, 0.8));
 
     border-color: rgba(139, 92, 246, 0.25);
 
@@ -1613,11 +1597,9 @@ textarea {
     color: white;
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #8b5cf6,
-            #6366f1
-        );
+            #6366f1);
 
     cursor: pointer;
 
@@ -1810,7 +1792,7 @@ body.light .message.user .message-content {
     }
 
 
-    .welcome > p {
+    .welcome>p {
 
         font-size: 11px;
 
