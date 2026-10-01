@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QYVRENZA - AI Smart Search</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            color: white;
+            background:
+                radial-gradient(circle at 15% 20%, #6d28d9 0%, transparent 30%),
+                radial-gradient(circle at 85% 80%, #4c1d95 0%, transparent 30%),
+                #090617;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .glow {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.25;
+            z-index: -1;
+            animation: float 8s infinite alternate ease-in-out;
+        }
+
+        .glow-one {
+            background: #a855f7;
+            top: -120px;
+            left: -100px;
+        }
+
+        .glow-two {
+            background: #7c3aed;
+            right: -100px;
+            bottom: -120px;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(60px, 40px);
+            }
+        }
+
+        /* Main */
+        .app {
+            min-height: 100vh;
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            min-height: 100vh;
+            padding: 30px 18px;
+            background: rgba(15, 10, 35, 0.88);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #d8b4fe;
+            margin-bottom: 40px;
+        }
+
+        .logo span {
+            color: #a855f7;
+        }
+
+        .menu-title {
+            font-size: 11px;
+            color: #71717a;
+            letter-spacing: 1.5px;
+            margin: 0 12px 15px;
+        }
+
+        .nav-link {
+            display: block;
+            text-decoration: none;
+            color: #cbd5e1;
+            padding: 14px 15px;
+            margin-bottom: 8px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: white;
+            background: linear-gradient(
+                135deg,
+                rgba(168, 85, 247, 0.3),
+                rgba(124, 58, 237, 0.2)
+            );
+            transform: translateX(5px);
+        }
+
+        /* Main content */
+        .main {
+            flex: 1;
+            max-width: 1200px;
+            width: 100%;
+            margin: auto;
+            padding: 40px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 45px;
+        }
+
+        .header h1 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #a1a1aa;
+        }
+
+        .status {
+            padding: 9px 16px;
+            border-radius: 20px;
+            color: #86efac;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            font-size: 13px;
+        }
+
+        /* Search */
+        .search-section {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+        }
+
+        .search-box:focus-within {
+            border-color: #a855f7;
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
+        }
+
+        .search-icon {
+            font-size: 21px;
+            padding-left: 15px;
+        }
+
+        #searchInput {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: white;
+            font-size: 16px;
+            padding: 16px 5px;
+        }
+
+        #searchInput::placeholder {
+            color: #71717a;
+        }
+
+        #searchButton {
+            border: none;
+            padding: 14px 25px;
+            border-radius: 13px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            background: linear-gradient(135deg, #9333ea, #6d28d9);
+            transition: 0.3s;
+        }
+
+        #searchButton:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(147, 51, 234, 0.4);
+        }
+
+        /* Suggestions */
+        .suggestions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .suggestions button {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: #c4b5fd;
+            padding: 8px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .suggestions button:hover {
+            background: rgba(168, 85, 247, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Welcome */
+        .welcome {
+            max-width: 700px;
+            margin: 100px auto;
+            text-align: center;
+            animation: appear 0.8s ease;
+        }
+
+        .welcome-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .welcome h2 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .welcome p {
+            color: #71717a;
+            line-height: 1.6;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Overview */
+        .overview {
+            max-width: 850px;
+            margin: 45px auto 25px;
+            display: flex;
+            gap: 15px;
+            padding: 25px;
+            border-radius: 20px;
+            background: linear-gradient(
+                135deg,
+                rgba(126, 34, 206, 0.25),
+                rgba(59, 7, 100, 0.2)
+            );
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            animation: appear 0.5s ease;
+        }
+
+        .overview-icon {
+            font-size: 25px;
+        }
+
+        .overview h3 {
+            color: #d8b4fe;
+            margin-bottom: 8px;
+        }
+
+        .overview p {
+            color: #ddd6fe;
+            line-height: 1.6;
+        }
+
+        /* Results */
+        #resultsSection {
+            max-width: 850px;
+            margin: 25px auto;
+        }
+
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 18px;
+            color: #e4e4e7;
+        }
+
+        #results {
+            display: grid;
+            gap: 15px;
+        }
+
+        .result-card {
+            padding: 22px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: 0.3s;
+            animation: appear 0.5s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(168, 85, 247, 0.4);
+            background: rgba(168, 85, 247, 0.08);
+        }
+
+        .result-card h3 {
+            color: #e9d5ff;
+            margin-bottom: 9px;
+        }
+
+        .result-card p {
+            color: #a1a1aa;
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .category {
+            display: inline-block;
+            padding: 5px 11px;
+            border-radius: 15px;
+            background: rgba(168, 85, 247, 0.15);
+            color: #c4b5fd;
+            font-size: 12px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 50px;
+            color: #71717a;
+        }
+
+        .no-results-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            .app {
+                display: block;
+            }
+
+            .sidebar {
+                width: 100%;
+                min-height: auto;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .logo {
+                margin-bottom: 20px;
+            }
+
+            .nav-link {
+                display: inline-block;
+                margin-right: 5px;
+            }
+
+            .main {
+                padding: 20px;
+            }
+
+            .header {
+                display: block;
+            }
+
+            .status {
+                display: inline-block;
+                margin-top: 15px;
+            }
+
+            .search-box {
+                flex-wrap: wrap;
+            }
+
+            #searchInput {
+                min-width: 150px;
+            }
+
+            #searchButton {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                QYV<span>RENZA</span>
+            </div>
+
+            <p class="menu-title">AI WORKSPACE</p>
+
+            <a href="../AI-Chat/index.html" class="nav-link">
+                💬 AI Chat
+            </a>
+
+            <a href="../smart-search/index.html"
+               class="nav-link active">
+                🔎 Smart Search
+            </a>
+
+            <a href="../document-summarizer/index.html"
+               class="nav-link">
+                📄 Document Summarizer
+            </a>
+
+        </aside>
+
+
+        <!-- MAIN -->
+        <main class="main">
+
+            <header class="header">
+
+                <div>
+                    <h1>AI Smart Search</h1>
+
+                    <p>
+                        Find information quickly with QYVRENZA AI.
+                    </p>
+                </div>
+
+                <div class="status">
+                    ● AI Ready
+                </div>
+
+            </header>
+
+
+            <!-- SEARCH BOX -->
+            <section class="search-section">
+
+                <div class="search-box">
+
+                    <span class="search-icon">🔍</span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search Python, AI, Machine Learning..."
+                    >
+
+                    <button onclick="performSearch()">
+                        Search
+                    </button>
+
+                </div>
+
+
+                <div class="suggestions">
+
+                    <button onclick="quickSearch('Python')">
+                        Python
+                    </button>
+
+                    <button onclick="quickSearch('AI')">
+                        Artificial Intelligence
+                    </button>
+
+                    <button onclick="quickSearch('Machine Learning')">
+                        Machine Learning
+                    </button>
+
+                    <button onclick="quickSearch('Data Structures')">
+                        Data Structures
+                    </button>
+
+                    <button onclick="quickSearch('Web Development')">
+                        Web Development
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- WELCOME -->
+            <section class="welcome" id="welcome">
+
+                <div class="welcome-icon">
+                    ✨
+                </div>
+
+                <h2>
+                    What do you want to search?
+                </h2>
+
+                <p>
+                    Enter a topic above and QYVRENZA
+                    will show relevant information.
+                </p>
+
+            </section>
+
+
+            <!-- AI OVERVIEW -->
+            <section
+                class="overview"
+                id="overview"
+                style="display:none;">
+
+                <div class="overview-icon">
+                    ✨
+                </div>
+
+                <div>
+
+                    <h3>
+                        AI Overview
+                    </h3>
+
+                    <p id="overviewText"></p>
+
+                </div>
+
+            </section>
+
+
+            <!-- RESULTS -->
+            <section
+                id="resultsSection"
+                style="display:none;">
+
+                <h2 class="section-title">
+                    Search Results
+                </h2>
+
+                <div id="results"></div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script>
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        const welcome =
+            document.getElementById("welcome");
+
+        const overview =
+            document.getElementById("overview");
+
+        const overviewText =
+            document.getElementById("overviewText");
+
+        const resultsSection =
+            document.getElementById("resultsSection");
+
+        const results =
+            document.getElementById("results");
+
+
+        /* Search database */
+
+        const searchData = [
+
+            {
+                title: "Python Programming",
+                description:
+                    "Python is a popular programming language used for programming, automation, data science, artificial intelligence and machine learning.",
+                category: "Programming"
+            },
+
+            {
+                title: "Artificial Intelligence",
+                description:
+                    "Artificial Intelligence is a field of computer science that focuses on creating systems capable of performing tasks that normally require human intelligence.",
+                category: "AI"
+            },
+
+            {
+                title: "Machine Learning",
+                description:
+                    "Machine Learning allows computers to learn patterns from data and use those patterns to make predictions or decisions.",
+                category: "AI / ML"
+            },
+
+            {
+                title: "Data Structures",
+                description:
+                    "Data structures organize and store data efficiently. Examples include arrays, linked lists, stacks, queues, trees and graphs.",
+                category: "Computer Science"
+            },
+
+            {
+                title: "Web Development",
+                description:
+                    "Web development involves creating websites and web applications using HTML, CSS and JavaScript.",
+                category: "Web Development"
+            },
+
+            {
+                title: "JavaScript",
+                description:
+                    "JavaScript is used to create interactive and dynamic web pages.",
+                category: "Web Development"
+            },
+
+            {
+                title: "NumPy",
+                description:
+                    "NumPy is a Python library used for numerical computing, arrays and mathematical operations.",
+                category: "Data Science"
+            },
+
+            {
+                title: "Data Science",
+                description:
+                    "Data Science combines programming, statistics and machine learning to analyze data and discover useful patterns.",
+                category: "Data Science"
+            },
+
+            {
+                title: "HTML",
+                description:
+                    "HTML is the standard markup language used to create the structure of web pages.",
+                category: "Web Development"
+            },
+
+            {
+                title: "CSS",
+                description:
+                    "CSS is used to style websites by controlling colors, layouts, fonts and animations.",
+                category: "Web Development"
+            }
+
+        ];
+
+
+        /* Search */
+
+        function performSearch() {
+
+            const query =
+                searchInput.value.trim().toLowerCase();
+
+
+            if (query === "") {
+
+                welcome.style.display = "block";
+
+                overview.style.display = "none";
+
+                resultsSection.style.display = "none";
+
+                return;
+            }
+
+
+            const matchedResults =
+                searchData.filter(function(item) {
+
+                    const text =
+                        (
+                            item.title +
+                            " " +
+                            item.description +
+                            " " +
+                            item.category
+                        ).toLowerCase();
+
+                    return text.includes(query);
+
+                });
+
+
+            welcome.style.display = "none";
+
+            overview.style.display = "flex";
+
+            resultsSection.style.display = "block";
+
+
+            overviewText.textContent =
+                "QYVRENZA found " +
+                matchedResults.length +
+                " result(s) related to \"" +
+                searchInput.value +
+                "\".";
+
+
+            results.innerHTML = "";
+
+
+            if (matchedResults.length === 0) {
+
+                results.innerHTML = `
+
+                    <div class="no-results">
+
+                        <div class="no-results-icon">
+                            🔍
+                        </div>
+
+                        <h3>
+                            No results found
+                        </h3>
+
+                        <p>
+                            Try Python, AI, Machine Learning,
+                            Data Structures or Web Development.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            matchedResults.forEach(function(item) {
+
+                const card =
+                    document.createElement("div");
+
+                card.className = "result-card";
+
+
+                card.innerHTML = `
+
+                    <h3>${item.title}</h3>
+
+                    <p>${item.description}</p>
+
+                    <span class="category">
+                        ${item.category}
+                    </span>
+
+                `;
+
+
+                results.appendChild(card);
+
+            });
+
+        }
+
+
+        /* Quick search */
+
+        function quickSearch(value) {
+
+            searchInput.value = value;
+
+            performSearch();
+
+        }
+
+
+        /* Enter key */
+
+        searchInput.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Enter") {
+                    performSearch();
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
