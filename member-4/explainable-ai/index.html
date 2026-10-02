@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111916">
+    <meta name="description" content="Inspect feature contributions behind a machine learning prediction.">
+    <title>Explainable AI | QYVRENZA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header class="topbar">
+        <a class="brand" href="../../index.html"><span class="brand-mark">Q</span><span>QYVRENZA</span></a>
+        <nav aria-label="Member 4 apps"><a href="../experiment-tracker/index.html">Experiments</a><a href="index.html"
+                aria-current="page">Explainability</a><a href="../model-monitoring/index.html">Monitoring</a></nav>
+        <span class="top-meta">ML SYSTEMS / 04</span>
+    </header>
+
+    <main class="shell">
+        <section class="page-head">
+            <div>
+                <p class="eyebrow"><span class="pulse"></span> Model transparency</p>
+                <h1>Explainable AI</h1>
+                <p class="lede">Understand which signals contributed to a prediction and how strongly they influenced
+                    the result.</p>
+            </div>
+            <div class="head-note"><span class="mono">MODEL</span><strong>Customer churn v2.4</strong><span>Prediction /
+                    customer 10482</span></div>
+        </section>
+
+        <section class="overview-grid">
+            <article class="panel prediction-panel">
+                <div class="panel-head">
+                    <div>
+                        <p class="eyebrow">Prediction output</p>
+                        <h2>Customer risk</h2>
+                    </div><span class="status status-risk">High risk</span>
+                </div>
+                <div class="prediction-value"><strong>87</strong><span>%</span></div>
+                <div class="confidence-track" aria-label="Confidence 87 percent"><span></span></div>
+                <div class="confidence-caption"><span>Confidence</span><strong>87%</strong></div>
+                <p class="prediction-note">The model estimates an elevated likelihood of churn based on the feature
+                    values below.</p>
+            </article>
+
+            <article class="panel feature-panel">
+                <div class="panel-head">
+                    <div>
+                        <p class="eyebrow">Contribution analysis</p>
+                        <h2>Feature importance</h2>
+                    </div><span class="panel-meta">Relative impact</span>
+                </div>
+                <div class="feature-list">
+                    <div class="feature">
+                        <div class="feature-head"><span>Monthly charges</span><strong>85%</strong></div>
+                        <div class="bar"><span class="fill positive" style="--value:85%"></span></div><small>Increased
+                            risk</small>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-head"><span>Contract length</span><strong>70%</strong></div>
+                        <div class="bar"><span class="fill positive" style="--value:70%"></span></div><small>Increased
+                            risk</small>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-head"><span>Customer tenure</span><strong>55%</strong></div>
+                        <div class="bar"><span class="fill negative" style="--value:55%"></span></div><small>Reduced
+                            risk</small>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-head"><span>Support calls</span><strong>35%</strong></div>
+                        <div class="bar"><span class="fill negative" style="--value:35%"></span></div><small>Reduced
+                            risk</small>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="lower-grid">
+            <article class="panel reasons-panel">
+                <div class="panel-head">
+                    <div>
+                        <p class="eyebrow">Decision context</p>
+                        <h2>Why this prediction?</h2>
+                    </div><span class="panel-meta">3 key signals</span>
+                </div>
+                <div class="generated-explanation" id="generated-explanation" hidden>
+                    <p class="eyebrow">Generated explanation</p>
+                    <p id="generated-copy"></p>
+                </div>
+                <div class="reason-list">
+                    <div class="reason"><span class="reason-index">01</span>
+                        <div><strong>Monthly charges are high</strong>
+                            <p>Higher monthly charges increased the predicted risk for this customer.</p>
+                        </div><span class="impact impact-up">+85%</span>
+                    </div>
+                    <div class="reason"><span class="reason-index">02</span>
+                        <div><strong>Contract period is short</strong>
+                            <p>A shorter contract period contributed to the high-risk prediction.</p>
+                        </div><span class="impact impact-up">+70%</span>
+                    </div>
+                    <div class="reason"><span class="reason-index">03</span>
+                        <div><strong>Customer tenure is protective</strong>
+                            <p>A longer customer relationship reduced the predicted risk.</p>
+                        </div><span class="impact impact-down">-55%</span>
+                    </div>
+                </div>
+            </article>
+
+            <aside class="panel model-panel">
+                <div class="panel-head">
+                    <div>
+                        <p class="eyebrow">Method details</p>
+                        <h2>Model transparency</h2>
+                    </div>
+                </div>
+                <dl class="model-details">
+                    <div>
+                        <dt>Model</dt>
+                        <dd>Customer Churn Prediction</dd>
+                    </div>
+                    <div>
+                        <dt>Version</dt>
+                        <dd>v2.4</dd>
+                    </div>
+                    <div>
+                        <dt>Explanation method</dt>
+                        <dd>Feature contribution</dd>
+                    </div>
+                    <div>
+                        <dt>Last evaluated</dt>
+                        <dd>Today, 10:42 AM</dd>
+                    </div>
+                </dl>
+                <button class="primary-button" id="generate-explanation" type="button">Generate explanation</button>
+                <p class="inline-status" id="explanation-status" role="status" aria-live="polite"></p>
+            </aside>
+        </section>
+        <p class="footnote">Illustrative model output · explanations describe model signals, not causation.</p>
+    </main>
+</body>
+
+</html>
