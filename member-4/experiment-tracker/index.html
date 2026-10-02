@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111916">
+    <meta name="description" content="Review machine learning experiments, model parameters, and evaluation metrics.">
+    <title>Experiment Tracker | QYVRENZA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header class="topbar">
+        <a class="brand" href="../../index.html"><span class="brand-mark">Q</span><span>QYVRENZA</span></a>
+        <nav aria-label="Member 4 apps">
+            <a href="index.html" aria-current="page">Experiments</a>
+            <a href="../explainable-ai/index.html">Explainability</a>
+            <a href="../model-monitoring/index.html">Monitoring</a>
+        </nav>
+        <span class="top-meta">ML SYSTEMS / 04</span>
+    </header>
+
+    <main class="shell">
+        <section class="page-head">
+            <div>
+                <p class="eyebrow"><span class="pulse"></span> Model development</p>
+                <h1>Experiment tracker</h1>
+                <p class="lede">Compare runs, inspect parameters, and keep the strongest result close at hand.</p>
+            </div>
+            <div class="head-note"><span class="mono">PROJECT</span><strong>Customer churn</strong><span>Classification
+                    / v2.4</span></div>
+        </section>
+
+        <section class="stat-grid" aria-label="Experiment totals">
+            <article class="stat"><span>Total experiments</span><strong>48</strong><small>Across 3 model
+                    families</small></article>
+            <article class="stat"><span>Completed</span><strong>39</strong><small><i class="good-dot"></i> 81%
+                    completion rate</small></article>
+            <article class="stat"><span>Currently running</span><strong>6</strong><small><i class="live-dot"></i> 2
+                    workers active</small></article>
+            <article class="stat stat-highlight"><span>Best
+                    accuracy</span><strong>96.4<small>%</small></strong><small>Experiment 48 · Random Forest</small>
+            </article>
+        </section>
+
+        <section class="panel" aria-labelledby="runs-title">
+            <div class="panel-head">
+                <div>
+                    <p class="eyebrow">Run history</p>
+                    <h2 id="runs-title">Recent experiments</h2>
+                </div>
+                <span class="panel-meta">4 recent runs</span>
+            </div>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Experiment</th>
+                            <th scope="col">Model</th>
+                            <th scope="col">Accuracy</th>
+                            <th scope="col">Duration</th>
+                            <th scope="col">Status</th>
+                            <th scope="col"><span class="sr-only">Action</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="experiment-list">
+                        <tr class="experiment-row is-selected" tabindex="0" data-id="48" data-model="Random Forest"
+                            data-dataset="Customer Churn Dataset" data-learning-rate="0.01" data-trees="200"
+                            data-accuracy="96.4%" data-duration="18 minutes" data-status="Completed">
+                            <td><strong>Experiment 48</strong><small>Today, 10:42 AM</small></td>
+                            <td>Random Forest</td>
+                            <td class="metric-value">96.4%</td>
+                            <td>18 min</td>
+                            <td><span class="status status-complete">Completed</span></td>
+                            <td><button class="view-button" type="button" data-view-experiment
+                                    aria-label="View Experiment 48">View</button></td>
+                        </tr>
+                        <tr class="experiment-row" tabindex="0" data-id="47" data-model="XGBoost"
+                            data-dataset="Customer Churn Dataset" data-learning-rate="0.03" data-trees="160"
+                            data-accuracy="95.8%" data-duration="22 minutes" data-status="Running">
+                            <td><strong>Experiment 47</strong><small>Today, 9:18 AM</small></td>
+                            <td>XGBoost</td>
+                            <td class="metric-value">95.8%</td>
+                            <td>22 min</td>
+                            <td><span class="status status-running">Running</span></td>
+                            <td><button class="view-button" type="button" data-view-experiment
+                                    aria-label="View Experiment 47">View</button></td>
+                        </tr>
+                        <tr class="experiment-row" tabindex="0" data-id="46" data-model="Logistic Regression"
+                            data-dataset="Customer Churn Dataset" data-learning-rate="0.08" data-trees="Not applicable"
+                            data-accuracy="91.7%" data-duration="9 minutes" data-status="Completed">
+                            <td><strong>Experiment 46</strong><small>Yesterday, 4:06 PM</small></td>
+                            <td>Logistic Regression</td>
+                            <td class="metric-value">91.7%</td>
+                            <td>9 min</td>
+                            <td><span class="status status-complete">Completed</span></td>
+                            <td><button class="view-button" type="button" data-view-experiment
+                                    aria-label="View Experiment 46">View</button></td>
+                        </tr>
+                        <tr class="experiment-row" tabindex="0" data-id="45" data-model="Decision Tree"
+                            data-dataset="Customer Churn Dataset" data-learning-rate="0.02" data-trees="80"
+                            data-accuracy="88.9%" data-duration="7 minutes" data-status="Failed">
+                            <td><strong>Experiment 45</strong><small>Yesterday, 2:37 PM</small></td>
+                            <td>Decision Tree</td>
+                            <td class="metric-value">88.9%</td>
+                            <td>7 min</td>
+                            <td><span class="status status-failed">Failed</span></td>
+                            <td><button class="view-button" type="button" data-view-experiment
+                                    aria-label="View Experiment 45">View</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel detail-panel" aria-labelledby="detail-title">
+            <div class="panel-head">
+                <div>
+                    <p class="eyebrow">Selected run</p>
+                    <h2 id="detail-title">Experiment 48</h2>
+                </div>
+                <span id="detail-status" class="status status-complete">Completed</span>
+            </div>
+            <dl class="detail-grid">
+                <div>
+                    <dt>Model</dt>
+                    <dd id="detail-model">Random Forest</dd>
+                </div>
+                <div>
+                    <dt>Dataset</dt>
+                    <dd id="detail-dataset">Customer Churn Dataset</dd>
+                </div>
+                <div>
+                    <dt>Learning rate</dt>
+                    <dd id="detail-rate">0.01</dd>
+                </div>
+                <div>
+                    <dt>Number of trees</dt>
+                    <dd id="detail-trees">200</dd>
+                </div>
+                <div>
+                    <dt>Accuracy</dt>
+                    <dd id="detail-accuracy">96.4%</dd>
+                </div>
+                <div>
+                    <dt>Training time</dt>
+                    <dd id="detail-duration">18 minutes</dd>
+                </div>
+            </dl>
+            <div class="detail-actions">
+                <button id="save-experiment" class="primary-button" type="button">Save selected experiment</button>
+                <p id="save-status" class="inline-status" role="status" aria-live="polite"></p>
+            </div>
+        </section>
+        <p class="footnote">Sample experiment data · saved selections stay in this browser.</p>
+    </main>
+</body>
+
+</html>

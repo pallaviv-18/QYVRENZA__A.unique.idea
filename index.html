@@ -321,6 +321,10 @@
             background: var(--yellow);
         }
 
+        .app-card[data-group="mlops"] .app-link {
+            background: var(--blue);
+        }
+
         .empty-state {
             display: none;
             grid-column: 1 / -1;
@@ -467,7 +471,7 @@
                     project or filter the collection to find a starting point.</p>
             </div>
             <div class="project-count">
-                <strong id="total-count">12</strong>
+                <strong id="total-count">15</strong>
                 <span class="count">live prototypes</span>
             </div>
         </section>
@@ -479,6 +483,7 @@
                 <button class="filter" type="button" data-filter="workspace" aria-pressed="false">AI workspace</button>
                 <button class="filter" type="button" data-filter="agents" aria-pressed="false">Agents</button>
                 <button class="filter" type="button" data-filter="analytics" aria-pressed="false">Analytics</button>
+                <button class="filter" type="button" data-filter="mlops" aria-pressed="false">ML systems</button>
             </div>
             <label class="sr-only" for="project-search">Search projects</label>
             <input class="search" id="project-search" type="search" placeholder="Search projects..." autocomplete="off">
@@ -600,7 +605,7 @@
             <article class="app-card" data-group="analytics" data-search="analytics dashboard metrics member 5">
                 <div class="preview"><iframe src="member-5/analytics-dashboard/index.html"
                         title="Preview: analytics dashboard" loading="lazy"></iframe><span class="preview-label">10 /
-                        12</span></div>
+                        15</span></div>
                 <div class="app-body">
                     <div class="app-meta"><span>Member 05</span><span>Analytics</span></div>
                     <h2 class="app-title">Analytics Dashboard</h2>
@@ -613,7 +618,7 @@
             <article class="app-card" data-group="analytics" data-search="anomaly detection alerts monitor member 5">
                 <div class="preview"><iframe src="member-5/anomaly-detection/index.html"
                         title="Preview: anomaly detection" loading="lazy"></iframe><span class="preview-label">11 /
-                        12</span></div>
+                        15</span></div>
                 <div class="app-body">
                     <div class="app-meta"><span>Member 05</span><span>Analytics</span></div>
                     <h2 class="app-title">Anomaly Detection</h2>
@@ -626,12 +631,53 @@
             <article class="app-card" data-group="analytics" data-search="prediction studio forecast modeling member 5">
                 <div class="preview"><iframe src="member-5/prediction-studio/index.html"
                         title="Preview: prediction studio" loading="lazy"></iframe><span class="preview-label">12 /
-                        12</span></div>
+                        15</span></div>
                 <div class="app-body">
                     <div class="app-meta"><span>Member 05</span><span>Analytics</span></div>
                     <h2 class="app-title">Prediction Studio</h2>
                     <p class="app-description">A workspace for reviewing forecasts and model outputs.</p><a
                         class="app-link" href="member-5/prediction-studio/index.html">Open project <span
+                            aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <article class="app-card" data-group="mlops"
+                data-search="experiment tracker machine learning model runs member 4">
+                <div class="preview"><iframe src="member-4/experiment-tracker/index.html"
+                        title="Preview: ML experiment tracker" loading="lazy"></iframe><span class="preview-label">13 /
+                        15</span></div>
+                <div class="app-body">
+                    <div class="app-meta"><span>Member 04</span><span>ML systems</span></div>
+                    <h2 class="app-title">Experiment Tracker</h2>
+                    <p class="app-description">Compare training runs, model parameters, and evaluation metrics.</p><a
+                        class="app-link" href="member-4/experiment-tracker/index.html">Open project <span
+                            aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <article class="app-card" data-group="mlops"
+                data-search="explainable ai feature importance model transparency member 4">
+                <div class="preview"><iframe src="member-4/explainable-ai/index.html" title="Preview: explainable AI"
+                        loading="lazy"></iframe><span class="preview-label">14 /
+                        15</span></div>
+                <div class="app-body">
+                    <div class="app-meta"><span>Member 04</span><span>ML systems</span></div>
+                    <h2 class="app-title">Explainable AI</h2>
+                    <p class="app-description">Inspect the signals and feature contributions behind a prediction.</p><a
+                        class="app-link" href="member-4/explainable-ai/index.html">Open project <span
+                            aria-hidden="true">↗</span></a>
+                </div>
+            </article>
+
+            <article class="app-card" data-group="mlops" data-search="model monitoring drift latency health member 4">
+                <div class="preview"><iframe src="member-4/model-monitoring/index.html"
+                        title="Preview: model monitoring" loading="lazy"></iframe><span class="preview-label">15 /
+                        15</span></div>
+                <div class="app-body">
+                    <div class="app-meta"><span>Member 04</span><span>ML systems</span></div>
+                    <h2 class="app-title">Model Monitoring</h2>
+                    <p class="app-description">Review deployed model health, data drift, and service performance.</p><a
+                        class="app-link" href="member-4/model-monitoring/index.html">Open project <span
                             aria-hidden="true">↗</span></a>
                 </div>
             </article>
@@ -642,7 +688,7 @@
 
     <footer class="shell footer">
         <p class="footer-note">QYVRENZA · Project directory</p>
-        <p class="footer-note">12 prototypes · 4 collections</p>
+        <p class="footer-note">15 prototypes · 5 collections</p>
     </footer>
 
     <script>

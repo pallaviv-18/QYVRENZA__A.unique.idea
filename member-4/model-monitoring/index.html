@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111916">
+    <meta name="description" content="Monitor model health, drift, accuracy, and system latency.">
+    <title>Model Monitoring | QYVRENZA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header class="topbar">
+        <a class="brand" href="../../index.html"><span class="brand-mark">Q</span><span>QYVRENZA</span></a>
+        <nav aria-label="Member 4 apps"><a href="../experiment-tracker/index.html">Experiments</a><a
+                href="../explainable-ai/index.html">Explainability</a><a href="index.html"
+                aria-current="page">Monitoring</a></nav>
+        <span class="top-meta">ML SYSTEMS / 04</span>
+    </header>
+
+    <main class="shell">
+        <section class="page-head">
+            <div>
+                <p class="eyebrow"><span class="pulse"></span> Production health</p>
+                <h1>Model monitoring</h1>
+                <p class="lede">Track deployed model health, drift, and service performance from one operational view.
+                </p>
+            </div>
+            <div class="head-note"><span class="mono">ENVIRONMENT</span><strong>Production</strong><span>12 active
+                    models</span></div>
+        </section>
+
+        <section class="stat-grid" aria-label="Monitoring summary">
+            <article class="stat"><span>Active models</span><strong>12</strong><small>Across 4 services</small>
+            </article>
+            <article class="stat"><span>Healthy</span><strong class="mint-text">9</strong><small><i
+                        class="good-dot"></i> Within thresholds</small></article>
+            <article class="stat"><span>Warnings</span><strong class="amber-text">2</strong><small><i
+                        class="warn-dot"></i> Review recommended</small></article>
+            <article class="stat"><span>Critical</span><strong class="red-text">1</strong><small><i
+                        class="risk-dot"></i> Action required</small></article>
+        </section>
+
+        <section class="panel" aria-labelledby="models-title">
+            <div class="panel-head">
+                <div>
+                    <p class="eyebrow">Service inventory</p>
+                    <h2 id="models-title">Model status</h2>
+                </div><span class="panel-meta">4 of 12 shown</span>
+            </div>
+            <div class="model-list">
+                <article class="model">
+                    <div class="model-icon icon-mint">CC</div>
+                    <div class="model-info"><strong>Customer churn</strong><span>Classification · v2.4 · Updated 2h
+                            ago</span></div><span class="status status-healthy">Healthy</span>
+                </article>
+                <article class="model">
+                    <div class="model-icon icon-amber">FD</div>
+                    <div class="model-info"><strong>Fraud detection</strong><span>Risk scoring · v1.8 · Updated 5h
+                            ago</span></div><span class="status status-warning">Warning</span>
+                </article>
+                <article class="model">
+                    <div class="model-icon icon-blue">RC</div>
+                    <div class="model-info"><strong>Recommendations</strong><span>Ranking · v3.1 · Updated 1h ago</span>
+                    </div><span class="status status-healthy">Healthy</span>
+                </article>
+                <article class="model">
+                    <div class="model-icon icon-red">CR</div>
+                    <div class="model-info"><strong>Credit risk</strong><span>Classification · v1.3 · Updated 8h
+                            ago</span></div><span class="status status-critical">Critical</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel metrics-panel" aria-labelledby="metrics-title">
+            <div class="panel-head">
+                <div>
+                    <p class="eyebrow">Service signals</p>
+                    <h2 id="metrics-title">Performance metrics</h2>
+                </div><span class="panel-meta">Thresholds / last 24h</span>
+            </div>
+            <div class="metric-grid">
+                <div class="metric">
+                    <div class="metric-head"><span>Model accuracy</span><strong>94%</strong></div>
+                    <div class="track"><span class="bar-mint" style="--value:94%"></span></div><small>Target ≥
+                        90%</small>
+                </div>
+                <div class="metric">
+                    <div class="metric-head"><span>Data drift</span><strong>28%</strong></div>
+                    <div class="track"><span class="bar-amber" style="--value:28%"></span></div><small>Review above
+                        25%</small>
+                </div>
+                <div class="metric">
+                    <div class="metric-head"><span>System latency</span><strong>72 ms</strong></div>
+                    <div class="track"><span class="bar-blue" style="--value:72%"></span></div><small>Target under 100
+                        ms</small>
+                </div>
+            </div>
+            <div class="refresh-row"><button class="primary-button" id="refresh-monitoring" type="button">Refresh
+                    snapshot</button>
+                <p id="refresh-status" role="status" aria-live="polite">Snapshot captured today at 10:42 AM.</p>
+            </div>
+        </section>
+        <p class="footnote">Sample telemetry · refresh updates the snapshot timestamp; live model services are not
+            connected.</p>
+    </main>
+</body>
+
+</html>
